@@ -1,0 +1,670 @@
+/* Osnove */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    grid-template-areas:
+      "header"
+      "slider"
+      "offer"
+      "products"
+      "contact";
+  }
+  
+  :root {
+    --redcolor: #bb1a1a;
+    --blackcolor: #302828;
+    --hover: rgba(128, 128, 128, 0.5);
+  }
+  /* basis */
+  @-ms-viewport {
+    width: device-width;
+  }
+  body {
+    -ms-overflow-style: scrollbar;
+  }
+  @media screen and (max-width: 480px) {
+  
+    html, body {
+      min-width: 320px;
+    }
+  }
+  
+  /* header */
+  .divGlavni {
+    display: grid;
+    grid-area: header;
+    width: 100%;
+    grid-template-areas:
+      "ikon location location"
+      "ikon meni meni";
+    height: 120px;
+    font-size: 21px;
+  }
+  .logoHeader {
+    grid-area: ikon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+  }
+  .logoHeader img {
+    width: 100px;
+  }
+  .divGlavni ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .divDrugi {
+    grid-area: location;
+    width: 100%;
+    -webkit-clip-path: polygon(100% 0, 100% 38%, 100% 100%, 6% 100%, 0 0);
+    clip-path: polygon(100% 0, 100% 38%, 100% 100%, 6% 100%, 0 0);
+    background-color: var(--redcolor);
+    height: 60px;
+  }
+  
+  .crveniKontakt {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+  }
+  .crveniKontakt li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .crveniKontakt img {
+    width: 21px;
+    margin-right: 8px;
+  }
+  /* Navbar480px */
+  @media screen and (min-width: 481px){
+    .overlay, span, .span1{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 480px){
+    #nav1{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .crveniKontakt {
+      font-size: 0.8em;
+    }
+  }
+  @media screen and (max-width: 980px) {
+    .crveniKontakt {
+      font-size: 0.8em;
+      padding: 5px;
+    }
+    .crveniKontakt img{
+      margin-right: 2px;
+    }
+    .divMenu{
+      font-size: 0.9em;
+    }
+  }
+  @media screen and (max-width: 736px) {
+    .crveniKontakt {
+      font-size: 0.7em;
+      padding: 2px;
+    }
+    .crveniKontakt img{
+      margin-right: 0px;
+    }
+    .divMenu{
+      font-size: 0.7em;
+    }
+  }
+  /* Overlay */
+  .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+  .span1 {
+    background-color: #bb1a1a;
+    border-bottom: solid 2px black;
+    height: 80px;
+  }
+  .spanimg {
+    float: left;
+    padding-left: 5px;
+    padding-top:5px;
+  }
+  .span1 span {
+    float: right;
+    padding-top: 20px;
+    padding-right: 25px;
+    color: #302828;
+  }
+  .span1 img {
+   width: 70px;
+  
+   }
+  @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+  /* Navbar 2 */
+  #navbar {
+    background-color: #bb1a1a; /* Black background color */
+    position: fixed; /* Make it stick/fixed */
+    top: -75px; /* Hide the navbar 50 px outside of the top view */
+    width: 100%; /* Full width */
+    height: 75px;
+    transition: top 0.3s; /* Transition effect when sliding down (and up) */
+    color: white;
+    font-weight: bold;
+    border-bottom: #302828 3px solid;
+    z-index: 99;
+  }
+  #navbar .navSlika {
+    width: 70px;
+    margin: 0px 10px 5px 10px;
+  }
+  /* Style the navbar links */
+  #navbar .linkovi{
+    float: right;
+    display: block;
+    color: white;
+    padding-right: 5%;
+  }
+  #navbar .linkovi a{
+    color: white;
+    text-align: center;
+    padding: 30px 14px 25px 14px;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  #navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  @media screen and (max-width: 480px) {
+  #navbar {
+    display: none;
+  }
+  }
+  
+  /* meni */
+  #nav1 {
+    background-color: white;
+  }
+  .divMenu {
+    height: 50px;
+    grid-area: meni;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .divMenu ul li a {
+    text-decoration: none;
+    padding: 10px;
+    color: var(--blackcolor);
+    width: 100%;
+    font-weight: bold;
+  }
+  .divMenu ul {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+  }
+  .divMenu ul li {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .divMenu ul li:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  * {
+    box-sizing:border-box;
+    list-style: none;
+  }
+  
+/* Proizvodi  */
+
+.proizvodi{
+    width: 100%;
+    display: grid;
+    grid-template-areas:"naslov"
+                        "listaProizvoda";
+    padding: 50px;
+   
+    background-image: url(../images/CustomMeso.png);
+    background-repeat: repeat;
+}
+.itemsNaslov{
+    width: 100%;
+    grid-area: naslov;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.itemsNaslov h4{
+    font-size: 4em;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 0px;
+}
+.items-list{
+    grid-area: listaProizvoda;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.lista{
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 5px solid #bb1a1a;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.naslovListe{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.naslovListe h6{
+    font-size: 2em;
+}
+.elementListe:last-child {
+    padding-bottom: 20px;
+}
+.elementListe{
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    font-weight: 800;
+}
+.elementListe:last-child{
+    border: none;
+}
+#listaSvinjetina{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#listaJunetina{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#listaPiletina{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#listaMesano{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#listaPecenje{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#listaLepinje{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+  /* footer */
+
+.footer img {
+    width: 27px;
+  }
+  .footer {
+    background-color: #302828;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+  }
+  .logoFooter img {
+    width: 10%;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+  }
+  .footerBox {
+    width: 15%;
+    background-color: #bb1a1a;
+    position: absolute;
+    margin-top: -1%;
+    left: 40%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  .drugaC {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2em;
+  }
+  .telefonFooter img,
+  .locationFooter img,
+  .radno img {
+    margin-right: 5%;
+    width: 10%;
+  }
+  .radno {
+    text-align: center;
+  }
+  
+  .socialFooter a {
+    padding: 5%;
+    margin: 5%;
+  }
+  
+  hr {
+    color: silver;
+    width: 90%;
+  }
+  .linija {
+    border-top: silver solid 1px;
+    width: 90%;
+    margin-left: 5%;
+    position: absolute;
+    top: 88%;
+  }
+  .dnoFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dnoFooter p,
+  a {
+    display: inline-block;
+    color: rgba(192, 192, 192, 0.7);
+  }
+  .divMenuFooter ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+  }
+  
+  .divMenuFooter a {
+    color: rgba(192, 192, 192, 0.7);
+    font-size: 1.2em;
+    text-decoration: none;
+  }
+  .dnoFooter {
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .divMenuFooter {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rights {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rights a {
+    text-decoration: none;
+  }
+  .divMenuFooter ul li {
+    border-right: solid 2px rgba(192, 192, 192, 0.7);
+    padding: 0 6.4%;
+  }
+  .divMenuFooter li:last-child {
+    border: none;
+  }
+  
+  .mapa {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 25%;
+    height: 60%;
+  }
+  .mapa iframe {
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width:2561px){ 
+    .locationFooter {
+      margin-right:10% ;
+    }
+  }
+  @media screen and (max-width:1280px){
+    .footerBox {
+      width:25%;
+      left: 35%;
+    }
+  
+  .locationFooter {
+    margin-right:9% ;
+  }
+  .logoFooter img{
+    width: 150px;
+  }
+  }
+  @media screen and (max-width:980px) {
+    .footerBox {
+      width: 40%;
+      left: 25%;
+    }
+    .locationFooter {
+      margin-right:9% ;
+    }
+    .logoFooter img{
+      width: 105px;
+    }
+    .rights {
+    width: 95%;
+    font-size: 0.9em;
+  }
+  }
+  @media screen and (max-width:736px){
+  .footerBox {
+    width: 40%;
+    left: 25%;
+    
+  }
+  .locationFooter {
+    margin-right:9% ;
+  }
+  .logoFooter img {
+    width: 95px;
+  }
+  .rights {
+    width: 95%;
+    font-size: 0.9em;
+  }
+  
+  }
+  @media screen and (max-width:480px) {
+    .logoFooter  {
+      display: none;
+    }
+    .footerBox {
+      width: 75%;
+      left: 12.5%;
+      font-size: 0.8em;
+    }
+    .locationFooter {
+      margin-right:7% ;
+    }
+    .mapa{
+      display: none;
+    }
+    .rights {
+      font-size: 0.7em;
+      width: 85%;
+      text-align: center;
+    }
+  }
+
+/* Laptop L */
+@media screen and (max-width: 1440px){
+
+    /* proizvodi stranica */
+    .itemsNaslov{
+        font-size: 0.7em;
+    }
+    .lista{
+        width: 60%;
+    }
+}
+/* laptop */
+@media screen and (max-width: 1024px) {
+
+    .itemsNaslov{
+        font-size: 0.5em;
+    }
+    .lista{
+        width: 70%;
+    }
+}
+
+/* tablet */
+@media screen and (max-width: 768px) {
+    .itemsNaslov{
+        font-size: 0.6em;
+    }
+    .lista{
+        width: 80%;
+    }
+
+}
+
+/* mobile L */
+@media screen and (max-width: 425px) {
+    .itemsNaslov{
+        font-size: 0.5em;
+    }
+    .lista{
+        width: 100%;
+    }
+    .elementNaziv{
+        font-size: 1em;
+    }
+    .elementCena{
+        font-size: 1em;
+    }
+    .naslovListe{
+        text-align: center;
+    }}
+
+    @media screen and (max-width:980px) and (orientation:landscape) {
+      .footerBox {
+        height: 60vh;
+      }
+      .footer {
+        height: 70vh;
+      }
+    }
